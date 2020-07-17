@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CNPMNC.Models.CT_Khach_Hang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Khach_Hang.LoaiKhach)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TenKhach)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CMND)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DiaChi)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Khach_Hang.LoaiKhach)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenKhach)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CMND)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.KhachID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.KhachID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.KhachID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>

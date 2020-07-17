@@ -1,0 +1,107 @@
+﻿@model CNPMNC.Models.CT_Hoa_Don
+
+@{
+    ViewBag.Title = "Lập hoá đơn";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h4 class="m-0 font-weight-bold text-primary">Lập hoá đơn</h4>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>Khách hàng</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <input class="form-control" type="text" placeholder="Nhập tên khách hàng.."/>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>Địa chỉ</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <input class="form-control" type="text" placeholder="Nhập địa chỉ.." />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>Trị giá</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <input class="form-control" type="text" placeholder="Trị giá.." />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>Phòng</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <input class="form-control" type="text" placeholder="Tên phòng.." />
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <div class="control-label col-lg-12 col-md-12">
+                                        <h6>Số ngày thuê</h6>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <input class="form-control" type="text" placeholder="Số ngày thuê.." />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <div class="control-label col-lg-12 col-md-12">
+                                        <h6>Đơn giá</h6>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <input class="form-control" type="text" placeholder="Đơn giá.." />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <div class="control-label col-lg-12 col-md-12">
+                                        <h6>Thành tiền</h6>
+                                    </div>                                    
+                                    <div class="col-lg-12 col-md-12">
+                                        <input class="form-control" type="text" placeholder="Thành tiền.." />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Tạo mới" class="btn btn-primary" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <a type="button" class="btn btn-primary" href="@Url.Action("Index", "CT_Hoa_Don", new { area = ""})" style="margin-bottom: 5px; ">Quay về</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                }
+
+            </div>
+        </div>
+
+        
+    </div>

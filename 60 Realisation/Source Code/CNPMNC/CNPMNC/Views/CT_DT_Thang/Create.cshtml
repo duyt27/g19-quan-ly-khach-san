@@ -1,0 +1,86 @@
+﻿@model CNPMNC.Models.CT_DT_Thang
+
+@{
+    ViewBag.Title = "Lập báo cáo doanh thu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container-fluid">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h4 class="m-0 font-weight-bold text-primary">Lập báo cáo doanh thu</h4>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>Tháng</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    @Html.DropDownList("ThangID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ThangID, "", new { @class = "text-danger" })
+                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div class="control-label col-lg-12 col-md-12">
+                                        <h6>Loại phòng</h6>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        @Html.DropDownList("PhongID", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.PhongID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div class="control-label col-lg-12 col-md-12">
+                                        <h6>Doanh thu</h6>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        @Html.EditorFor(model => model.DoanhThu, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DoanhThu, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div class="control-label col-lg-12 col-md-12">
+                                        <h6>Tỷ lệ</h6>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        @Html.EditorFor(model => model.TyLe, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TyLe, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Tạo mới" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <a type="button" class="btn btn-primary" href="@Url.Action("Index", "CT_DT_Thang", new { area = ""})" style="margin-bottom: 5px; ">Quay về</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>

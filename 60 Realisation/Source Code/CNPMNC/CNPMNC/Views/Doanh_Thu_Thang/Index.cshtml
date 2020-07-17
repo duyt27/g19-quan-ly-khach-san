@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CNPMNC.Models.Doanh_Thu_Thang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Doanh thu tháng</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div>
+                        <a type="button" class="btn btn-primary" href="@Url.Action("Create", "Doanh_Thu_Thang", new { area = ""})" style="margin-bottom: 5px;">Thêm mới</a>
+                    </div>
+                    <div>
+                        <a type="button" class="btn btn-primary" href="@Url.Action("Index", "CT_DT_THang", new { area = ""})" style="margin-bottom: 5px; margin-left: 5px;">Danh sách phòng</a>
+                    </div>
+                </div>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Thang)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Thang)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ThangID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ThangID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+        
+    </div>

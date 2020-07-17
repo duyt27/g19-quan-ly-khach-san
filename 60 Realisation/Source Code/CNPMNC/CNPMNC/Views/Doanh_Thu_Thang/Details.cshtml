@@ -1,0 +1,28 @@
+﻿@model CNPMNC.Models.Doanh_Thu_Thang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <h3>Details</h3>
+
+        <div>
+            <h4>Doanh_Thu_Thang</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Thang)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Thang)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ThangID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>

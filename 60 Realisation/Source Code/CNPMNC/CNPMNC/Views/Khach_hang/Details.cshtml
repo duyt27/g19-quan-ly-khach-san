@@ -1,0 +1,28 @@
+﻿@model CNPMNC.Models.Khach_hang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <h3>Details</h3>
+
+        <div>
+            <h4>Khach_hang</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.LoaiKhach)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LoaiKhach)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.LoaiKhachID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>

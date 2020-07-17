@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Kết quả tìm kiếm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Danh sách phòng</h6>
+            </div>
+            <div class="card-body">
+                <div>
+                    <a type="button" class="btn btn-primary" href="@Url.Action("TimPhong","ThuePhong_VM")" style="margin-bottom: 5px;">Quay về</a>
+                </div>
+                <table class="table">
+                    <tr>
+                        <th>
+                            Tên phòng
+                        </th>
+                        <th>
+                            Loại phòng
+                        </th>
+                        <th>
+                            Đơn giá
+                        </th>
+                        <th>
+                            Tình trạng
+                        </th>
+                    </tr>
+
+                    @foreach (var item in (dynamic)ViewData["tenp"])
+                    {
+                        <tr>
+                            <td>
+                                @item.TenPhong
+                            </td>
+                            <td>
+                                @item.DM_Phong.TenLoaiPhong
+                            </td>
+                            <td>
+                                @item.DM_Phong.DonGia
+                            </td>
+                            <td>
+                                @item.TinhTrang
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+        
+    </div>
+
+

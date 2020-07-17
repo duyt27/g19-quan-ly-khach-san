@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<CNPMNC.Models.User>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Danh sách người dùng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container-fluid">
+            
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Danh sách người dùng</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-lg-12">
+                            <div>
+                                <a type="button" class="btn btn-primary" href="@Url.Action("Create","User")" style="margin-bottom: 5px;">Thêm mới người dùng</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Username</th>
+                                            <th>Họ tên</th>
+                                            <th>Email</th>
+                                            <th>#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr id="row_@item.UserID">
+                                                <td>@item.UserID</td>
+                                                <td>@item.Username</td>
+                                                <td>@item.Hoten</td>
+                                                <td>@item.Email</td>
+                                                <td>
+                                                    <a href="/Admin/User/Edit/@item.UserID">Sửa</a>
+                                                    |
+                                                    @*<a href="~/Areas/Admin/Views/User/Delete.cshtml">Xoá</a>*@
+                                                    @Ajax.ActionLink("Xoá", "Delete", new { @id = item.UserID}, new AjaxOptions
+                                               {
+                                                   Confirm = "Xác nhận xoá user này?",
+                                                   OnComplete = "$('#row_"+@item.UserID+"').remove()",
+                                                   HttpMethod = "Delete"
+                                               })
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+    </div>
+
+

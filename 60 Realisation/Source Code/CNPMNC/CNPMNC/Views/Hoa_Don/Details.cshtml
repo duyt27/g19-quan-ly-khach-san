@@ -1,0 +1,36 @@
+﻿@model CNPMNC.Models.Hoa_Don
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <h3>Details</h3>
+
+        <div>
+            <h4>Hoa_Don</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CT_Khach_Hang.TenKhach)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CT_Khach_Hang.TenKhach)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TriGia)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TriGia)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.HoaDonID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>

@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    @*<div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    </div>*@
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold " style="text-align: center;">Quản lý khách sạn</h4>
+        </div>
+        <div class="card-body">
+            <div class="wrapper">
+                <div class="cards">
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-3">
+                                <figure class="card">
+                                    <a class="collapse-item" href="@Url.Action("ListPhong", "ThuePhong_VM", new { area = ""})">
+                                        <img src="~/Content/Admin/img/cardimg.jpg" />
+                                        <figcaption>Lập danh mục phòng</figcaption>
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-3">
+                                <figure class="card">
+                                    <a class="collapse-item" href="@Url.Action("Create", "ThuePhong_VM", new { area = ""})">
+                                        <img src="~/Content/Admin/img/cardimg2.jpg" />
+                                        <figcaption>Lập phiếu thuê phòng</figcaption>
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-3">
+                                <figure class="card">
+                                    <a class="collapse-item" href="@Url.Action("ListPhong", "ThuePhong_VM", new { area = ""})">
+                                        <img src="~/Content/Admin/img/cardimg3.jpg" />
+                                        <figcaption>Tra cứu phòng</figcaption>
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-3">
+                                <figure class="card">
+                                    <a class="collapse-item" href="@Url.Action("Index", "CT_Hoa_Don", new { area = ""})">
+                                        <img src="~/Content/Admin/img/cardimg4.jpg" />
+                                        <figcaption>Lập hoá đơn</figcaption>
+                                    </a>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+
+                            </div>
+                            <div class="col-lg-3">
+                                <figure class="card">
+                                    <a class="collapse-item" href="@Url.Action("Index", "CT_DT_Thang", new { area = ""})">
+                                        <img src="~/Content/Admin/img/cardimg5.jpg" />
+                                        <figcaption>Lập báo cáo tháng</figcaption>
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-3">
+                                <figure class="card">
+                                    <a class="collapse-item" href="@Url.Action("Rules", "Home", new { area = ""})">
+                                        <img src="~/Content/Admin/img/cardimg6.jpg" />
+                                        <figcaption>Thay đổi quy định</figcaption>
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-3">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+<!-- /.container-fluid -->

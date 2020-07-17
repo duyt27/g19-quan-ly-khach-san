@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CNPMNC.Models.CT_Thue_Phong>
+
+@{
+    ViewBag.Title = "Chi tiết thuê phòng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Chi tiết thuê phòng</h6>
+            </div>
+            <div class="card-body">
+                <div>
+                    <a type="button" class="btn btn-primary" href="@Url.Action("Create", "CT_Thue_Phong", new { area = ""})" style="margin-bottom: 5px;">Thêm mới</a>
+                </div>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Thue_Phong.TP_ID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.KhachID)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Thue_Phong.TP_ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.KhachID)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.CT_TP_ID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CT_TP_ID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+        
+    </div>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CNPMNC.Models.Hoa_Don>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CT_Khach_Hang.TenKhach)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TriGia)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CT_Khach_Hang.TenKhach)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TriGia)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.HoaDonID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.HoaDonID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.HoaDonID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>

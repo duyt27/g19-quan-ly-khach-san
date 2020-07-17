@@ -1,0 +1,136 @@
+﻿@model CNPMNC.ViewModels.ThuePhongVM
+
+@{
+    ViewBag.Title = "Lập phiếu thuê phòng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@*<div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">Thêm loại phòng</h4>
+        </div>
+        <div class="card-body">
+
+        </div>
+    </div>*@
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Lập phiếu thuê phòng</h6>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.PhongID, "PhongID", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>Phòng</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    @Html.DropDownList("PhongID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PhongID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.NgayThue, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>Ngày thuê</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    @Html.EditorFor(model => model.NgayThue, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NgayThue, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.TenKhach, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>Tên khách</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    @Html.EditorFor(model => model.TenKhach, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TenKhach, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.LoaiKhachID, "LoaiKhachID", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>Loại khách</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    @Html.DropDownList("LoaiKhachID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.LoaiKhachID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.CMND, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>CMND</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    @Html.EditorFor(model => model.CMND, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CMND, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="control-label col-lg-12 col-md-12">
+                                    <h6>Địa chỉ</h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Tạo mới" class="btn btn-primary" /> |
+                            <a type="button" class="btn btn-primary" href="@Url.Action("ListPhong", "ThuePhong_VM", new { area = ""})">Quay về</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0"
+            });
+
+        });
+    </script>
+
+}

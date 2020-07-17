@@ -1,0 +1,52 @@
+﻿@model CNPMNC.Models.CT_DT_Thang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <h3>Details</h3>
+
+        <div>
+            <h4>CT_DT_Thang</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Doanh_Thu_Thang.Thang)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Doanh_Thu_Thang.Thang)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phong.TenPhong)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Phong.TenPhong)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DoanhThu)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DoanhThu)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TyLe)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TyLe)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CT_DTT_ID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>

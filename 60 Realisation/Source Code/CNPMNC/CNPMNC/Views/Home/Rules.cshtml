@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Thay đổi quy định";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Thay đổi quy định</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div>
+                        <a type="button" class="btn btn-primary" href="@Url.Action("Index", "DM_Phong", new { area = ""})" style="margin-bottom: 5px;">Thay đổi giá phòng</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <a type="button" class="btn btn-primary" href="@Url.Action("Index", "Khach_Hang", new { area = ""})" style="margin-bottom: 5px;">Thay đổi loại khách</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <a type="button" class="btn btn-primary" href="#" style="margin-bottom: 5px;">Thay đổi tỉ lệ phụ thu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+

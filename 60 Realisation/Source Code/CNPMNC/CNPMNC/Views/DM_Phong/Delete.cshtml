@@ -1,0 +1,47 @@
+﻿@model CNPMNC.Models.DM_Phong
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h4 class="m-0 font-weight-bold text-primary">Bạn có chắc muốn xoá?</h4>
+            </div>
+            <div class="card-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TenLoaiPhong)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.TenLoaiPhong)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DonGia)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DonGia)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Xoá" class="btn btn-primary" /> |
+                            <a type="button" class="btn btn-primary" href="@Url.Action("Index", "DM_Phong", new { area = ""})">Quay về</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        
+    </div>

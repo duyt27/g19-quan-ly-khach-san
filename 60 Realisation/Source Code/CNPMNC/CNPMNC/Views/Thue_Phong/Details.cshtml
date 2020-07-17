@@ -1,0 +1,36 @@
+﻿@model CNPMNC.Models.Thue_Phong
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <h3>Details</h3>
+
+        <div>
+            <h4>Thue_Phong</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phong.TenPhong)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Phong.TenPhong)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NgayThue)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NgayThue)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.TP_ID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>

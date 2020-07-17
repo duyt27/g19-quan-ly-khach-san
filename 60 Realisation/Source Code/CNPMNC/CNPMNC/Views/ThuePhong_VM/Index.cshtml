@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CNPMNC.Models.ThuePhongList>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container-fluid">
+        <h3>Index</h3>
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    Tên phòng
+                </th>
+                <th>
+                    Ngày thuê
+                </th>
+                <th>
+                    Tên khách hàng
+                </th>
+                <th>
+                    Loại khách
+                </th>
+                <th>
+                    CMND
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.phongdetails.TenPhong
+                    </td>
+                    <td>
+                        @item.thuePhongdetails.NgayThue
+                    </td>
+                    <td>
+                        @item.ctKhachhangdetails.TenKhach
+                    </td>
+                    <td>
+                        @item.khachhangdetails.LoaiKhach
+                    <td>
+                        @item.ctKhachhangdetails.CMND
+                    </td>
+                    <td>
+                        @item.ctKhachhangdetails.DiaChi
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>

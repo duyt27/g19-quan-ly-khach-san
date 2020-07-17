@@ -1,0 +1,36 @@
+﻿@model CNPMNC.Models.DM_Phong
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <h3>Details</h3>
+
+        <div>
+            <h4>DM_Phong</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TenLoaiPhong)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TenLoaiPhong)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DonGia)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DonGia)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.LoaiPhongID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
