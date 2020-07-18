@@ -1,0 +1,115 @@
+﻿CREATE DATABASE QLKS02
+--DROP DATABASE QuanLyKhachSan
+--DROP TABLE CT_THUE_PHONG
+GO
+USE QLKS02
+GO
+
+CREATE TABLE DM_Phong (
+	LoaiPhongID int NOT NULL PRIMARY KEY,
+	TenLoaiPhong nvarchar(50) NOT NULL,
+	DonGia float NOT NULL
+)
+
+CREATE TABLE Phong (
+	PhongID int NOT NULL PRIMARY KEY,
+	TenPhong nvarchar(50) NOT NULL,
+	GhiChu nvarchar(200),
+	TinhTrang nvarchar(50),
+	LoaiPhongID int FOREIGN KEY REFERENCES DM_PHONG(LoaiPhongID)
+	
+)
+CREATE TABLE Thue_Phong (
+	TP_ID int NOT NULL PRIMARY KEY,
+	NgayThue datetime NOT NULL,
+	PhongID int FOREIGN KEY REFERENCES PHONG(PhongID)
+)
+CREATE TABLE CT_Thue_Phong (
+	CT_TP_ID int NOT NULL PRIMARY KEY,
+	TP_ID int FOREIGN KEY REFERENCES THUE_PHONG(TP_ID),
+	KhachID int FOREIGN KEY REFERENCES CT_KHACH_HANG(KhachID)
+)
+CREATE TABLE Khach_Hang (
+	LoaiKhachID int NOT NULL PRIMARY KEY,
+	LoaiKhach varchar(10) NOT NULL
+)
+CREATE TABLE CT_Khach_Hang (
+	KhachID int NOT NULL PRIMARY KEY,
+	TenKhach nvarchar(50) NOT NULL,
+	CMND varchar(10) NOT NULL,
+	DiaChi nvarchar(100) NOT NULL,
+	LoaiKhachID int FOREIGN KEY REFERENCES KHACH_HANG(LoaiKhachID)
+)
+
+CREATE TABLE Hoa_Don (
+	Hoa_Don_ID int NOT NULL PRIMARY KEY,
+	TriGia float NOT NULL,
+	KhachID int FOREIGN KEY REFERENCES CT_KHACH_HANG(KhachID)
+)
+CREATE TABLE CT_Hoa_Don(
+	CTHD_ID int NOT NULL PRIMARY KEY,
+	SoNgayThue int NOT NULL,
+	ThanhTien float NOT NULL,
+	Hoa_Don_ID int FOREIGN KEY REFERENCES HOA_DON(Hoa_Don_ID),
+	PhongID int FOREIGN KEY REFERENCES PHONG(PhongID)
+)
+CREATE TABLE Doanh_Thu_Thang (
+	ThangID int NOT NULL PRIMARY KEY,
+	Thang date NOT NULL
+)
+CREATE TABLE CT_DT_Thang(
+	CT_DTT_ID int NOT NULL PRIMARY KEY,
+	DoanhThu float NOT NULL,
+	TyLe float NOT NULL,
+	ThangID int FOREIGN KEY REFERENCES DOANH_THU_THANG(ThangID),
+	PhongID int FOREIGN KEY REFERENCES PHONG(PhongID)
+)
+
+CREATE TABLE User_Acc (
+	UserID int NOT NULL PRIMARY KEY,
+	Username nvarchar(30) NOT NULL,
+	Password nvarchar(30) NOT NULL,
+	Hoten nvarchar(50) NOT NULL,
+	Email nvarchar(100) NOT NULL
+)
+
+
+--DROP TABLE User_Acc
+
+
+
+--Stored Procedure
+CREATE PROCEDURE sp_PHONG
+AS
+BEGIN
+	SELECT
+		PhongID
+      ,TenPhong
+      ,GhiChu
+	  ,TinhTrang
+	FROM PHONG
+	ORDER BY PhongID
+END;
+
+CREATE PROCEDURE sp_HoaDon
+AS
+BEGIN
+	SELECT DM_PHONG.TenPhong, CT_HOA_DON.SoNgayThue, DM_PHONG.DonGia, CT_HOA_DON.ThanhTien
+	FROM CT_HOA_DON
+	INNER JOIN HOA_DON ON CT_HOA_DON.Hoa_Don_ID = HOA_DON.Hoa_Don_ID
+	INNER JOIN DM_PHONG ON CT_HOA_DON.PhongID = DM_PHONG.PhongID;
+END;
+CREATE PROCEDURE sp_DTThang
+AS
+BEGIN
+	SELECT DOANH_THU_THANG.Thang, DM_PHONG.LoaiPhong, CT_DT_THANG.DoanhThu, CT_DT_THANG.TyLe
+	FROM CT_DT_THANG
+	INNER JOIN DOANH_THU_THANG ON CT_DT_THANG.ThangID = DOANH_THU_THANG.ThangID
+	INNER JOIN DM_PHONG ON CT_DT_THANG.PhongID = DM_PHONG.PhongID;
+END;
+
+--Stored Procedure
+execute sp_DMPHONG
+execute sp_DanhSach
+execute sp_HoaDon
+execute sp_DTThang
